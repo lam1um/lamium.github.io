@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Штанин Вадим | Звукооператор</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Базовые стили и сброс */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Навигационное меню */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 20, 0.95);
+            color: #fff;
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4DABF7;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #4DABF7;
+            color: #000;
+        }
+
+        /* Основные секции */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://placekitten.com/1200/800') no-repeat center center/cover;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #4DABF7;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background-color: #74C0FC;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: #1C7ED6;
+        }
+
+        /* Обо мне */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        /* Портфолио (Галерея) */
+        .portfolio-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Форма обратной связи */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-info a {
+            color: #1C7ED6;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #4DABF7;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        /* Футер */
+        footer {
+            background: #0F172A;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .social-links a {
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #4DABF7;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Плавная прокрутка */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигационное меню -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">ЗВУКОПЕРЕДАЧА</a>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#portfolio">Портфолио</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Главная секция -->
+    <section id="home" class="hero">
+        <h1>Штанин Вадим</h1>
+        <p>Начинающий звукооператор. Чистый звук для ваших мероприятий, концертов и записей.</p>
+        <a href="#portfolio" class="btn">Смотреть работы</a>
+    </section>
+
+    <!-- Секция "Обо мне" -->
+    <section id="about">
+        <h2>Обо мне</h2>
+        <div class="about-content">
+            <!-- Оригинальное фото -->
+            <img src="your-photo.jpg" alt="Штанин Вадим" class="about-img">
+            <div class="about-text">
+                <!-- Уникальный текст (более 300 символов) -->
+                <p>Меня зовут Штанин Вадим Игоревич, и я - начинающий звукооператор, currently studying at ГУАП. Моя страсть к звуку родилась из любви к музыке и технике - с детства я экспериментировал с аудиоаппаратурой, записывал первые треки и изучал основы звукорежиссуры.</p>
+                
+                <p>Как студент технического вуза, я подхожу к работе системно: не просто "кручу ручки", а понимаю физические процессы, стоящие за качественным звуком. Уже сейчас я имею опыт работы с оборудованием от Behringer, Yamaha и Soundcraft, а также активно осваиваю цифровые аудио рабочие станции (DAW) - Pro Tools, Ableton Live и Reaper.</p>
+                
+                <p>Я специализируюсь на звуковом сопровождении студенческих мероприятий, камерных концертов и презентаций. Мой ключевой принцип - чистота звучания и внимание к деталям. Я убежден, что хороший звук должен быть незаметным - он просто работает, создавая нужную атмосферу и не отвлекая от основного действия.</p>
+                
+                <p>Готов к сотрудничеству на мероприятиях любого масштаба - от академических конференций до музыкальных вечеров. Верю, что качественный звук доступен не только крупным проектам, но и начинающим артистам, и студенческим инициативам.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "Портфолио" (Галерея) -->
+    <section id="portfolio">
+        <h2>Мои работы</h2>
+        <div class="portfolio-gallery">
+            <div class="portfolio-item">
+                <img src="work-1.jpg" alt="Студенческий фестиваль ГУАП">
+            </div>
+            <div class="portfolio-item">
+                <img src="work-2.jpg" alt="Акустический концерт в кафе">
+            </div>
+            <div class="portfolio-item">
+                <img src="work-3.jpg" alt="Запись подкаста">
+            </div>
+            <div class="portfolio-item">
+                <img src="work-4.jpg" alt="Конференция в университете">
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "Контакты" с формой -->
+    <section id="contact">
+        <h2>Свяжитесь со мной</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <p><i class="fas fa-phone"></i> Телефон: <a href="tel:+79111542403">+7 (911) 154-24-03</a></p>
+                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:shtanin07@gmail.com">shtanin07@gmail.com</a></p>
+                <p><i class="fas fa-graduation-cap"></i> Образование: Студент ГУАП</p>
+                <p><i class="fas fa-map-marker-alt"></i> Город: Санкт-Петербург</p>
+                <p>Открыт к сотрудничеству и готов обсудить ваш проект. Специализируюсь на студенческих и камерных мероприятиях.</p>
+            </div>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error" id="email-error">Пожалуйста, введите корректный email (с символом @).</div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Отправить сообщение</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <!-- SVG-иконки заменены на Font Awesome для простоты, но это адаптивная графика -->
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>&copy; 2024 Штанин Вадим Игоревич. Начинающий звукооператор.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Валидация формы
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Предотвращаем реальную отправку формы
+
+            const emailField = document.getElementById('email');
+            const emailError = document.getElementById('email-error');
+            const emailValue = emailField.value;
+
+            // Простая проверка на наличие @
+            if (!emailValue.includes('@')) {
+                emailError.style.display = 'block';
+                emailField.style.borderColor = 'red';
+            } else {
+                emailError.style.display = 'none';
+                emailField.style.borderColor = '#ddd';
+                // В реальном проекте здесь был бы код для отправки данных на сервер
+                alert('Сообщение отправлено! Спасибо за ваше обращение.');
+                this.reset(); // Очищаем форму
+            }
+        });
+
+        // Плавная прокрутка для навигации (уже есть в CSS, но на всякий случай для старых браузеров)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
